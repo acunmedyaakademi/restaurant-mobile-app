@@ -7,29 +7,6 @@ export default function Cart() {
   const [totalPrice, setTotalPrice] = useState(0);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!Array.isArray(cart)) return; 
-
-    const newCartObj = {};
-    cart.forEach(item => {
-      if (newCartObj[item.name]) {
-        newCartObj[item.name].quantity++;
-      } else {
-        newCartObj[item.name] = {
-          name: item.name,
-          id: item.id,
-          quantity: 1,
-          price: item.price,
-        };
-      }
-    });
-
-    console.log("Yeni CartObj:", newCartObj);
-    
-    setCartObj(newCartObj);
-
-    localStorage.setItem("cartObj", JSON.stringify(newCartObj));
-  }, [cart]);
   
   async function completeOrder() {
     const { data, error } = await supabase
