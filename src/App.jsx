@@ -12,12 +12,11 @@ import { createClient } from '@supabase/supabase-js'
 // Todo:
 // login-sign up-sign out
 // sign up: isim-soyisim, tel no (auth ve users tablosu)
-// carta ekleme
 // checkout dedikten sonra adres kısmı kontrolü
-// orders ve order_details tablolarına ürün gönderme
 // ekstralar: notifications
 // cartObj hesaplaması product'a taşınacak
 // cartta ve products sayfasında + ve -, silme
+// "sipariş oluşturuldu"
 
 export const supabase = createClient('https://sxkbwpcardxrhfuqzvzc.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN4a2J3cGNhcmR4cmhmdXF6dnpjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI0NzQ3MjAsImV4cCI6MjA1ODA1MDcyMH0.f6pWVT3SGve_Xmcs_m2lH0YDX9anp3hI915eNgjfgTI')
 
