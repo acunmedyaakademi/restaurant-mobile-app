@@ -1,5 +1,13 @@
+import { useContext } from "react";
+import { SupabaseContext } from "../App";
+import { useNavigate } from "react-router-dom";
+
 export default function Login() {
+  const { supabase } = useContext(SupabaseContext);
+  const navigate = useNavigate();
+
   async function handleLogin(e) {
+    e.preventDefault();
     const formData = new FormData(e.target);
     const formObj = Object.fromEntries(formData);
     const { email, password } = formObj;
@@ -8,6 +16,8 @@ export default function Login() {
       email,
       password,
     })
+
+    navigate("/");
   }
 
   return (

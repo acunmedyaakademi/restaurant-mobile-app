@@ -12,11 +12,12 @@ import { createClient } from '@supabase/supabase-js'
 // Todo:
 // login-sign up-sign out
 // sign up: isim-soyisim, tel no (auth ve users tablosu)
-// kategorilerine ürünleri sıralama
 // carta ekleme
 // checkout dedikten sonra adres kısmı kontrolü
 // orders ve order_details tablolarına ürün gönderme
 // ekstralar: notifications
+// cartObj hesaplaması product'a taşınacak
+// cartta ve products sayfasında + ve -, silme
 
 export const supabase = createClient('https://sxkbwpcardxrhfuqzvzc.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN4a2J3cGNhcmR4cmhmdXF6dnpjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI0NzQ3MjAsImV4cCI6MjA1ODA1MDcyMH0.f6pWVT3SGve_Xmcs_m2lH0YDX9anp3hI915eNgjfgTI')
 
@@ -24,10 +25,18 @@ export const SupabaseContext = createContext(null)
 
 function App() {
   const [authUser, setAuthUser] = useState(null);
+  const [cart, setCart] = useState(() => {
+    const savedCart = localStorage.getItem("cart");
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
+  const [cartObj, setCartObj] = useState(() => {
+    const savedCart = localStorage.getItem("cartObj");
+    return savedCart ? JSON.parse(savedCart) : {}; 
+  });
 
   useEffect(() => {
     const { data } = supabase.auth.onAuthStateChange((event, session) => {
-      
+      console.log(event)
       if (event === 'SIGNED_IN') {
         setAuthUser(session.user.user_metadata);
       }
@@ -44,7 +53,7 @@ function App() {
 
   return (
     <>
-    <SupabaseContext.Provider value={supabase}>
+    <SupabaseContext.Provider value={{ supabase, cart, setCart, cartObj, setCartObj }}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
