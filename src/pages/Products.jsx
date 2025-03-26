@@ -111,25 +111,30 @@ export default function Products() {
           }
         </div>
         <div className="products-cont">
-          <h2>{categoryName}</h2>
+          <h3>{categoryName}</h3>
           <div className="products-list">
             {
               products.map(x => <div className="product-list-item">
-                <img src={x.img} />
-                <h3>{x.name}</h3>
-                <h4>₺{x.price}</h4>
-                <div className="quantity-controls">
-                  {
-                    Object.keys(cartObj).includes(x.name)
-                      ?
-                      <>
-                        <button className="cart-decrease-btn cart-quantity-control" onClick={() => handleQuantityDecrease(x)}>-</button>
-                        <span className="cart-quantity">{cartObj[x.name].quantity}</span>
-                        <button className="cart-increase-btn cart-quantity-control" onClick={() => handleQuantityIncrease(x)}>+</button>
-                      </>
-                      : <button className="add-to-cart-btn" onClick={() => addProductToCart(x)}>+</button>
-                  }
+                <div className="product-item-img">
+                  <img src={x.img} />
                 </div>
+                <h4>{x.name}</h4>
+                <div className="product-item-footer">
+                  <h5>₺{x.price}</h5>
+                  <div className="quantity-controls">
+                    {
+                      Object.keys(cartObj).includes(x.name)
+                        ?
+                        <>
+                          <button className="cart-decrease-btn cart-quantity-control" onClick={() => handleQuantityDecrease(x)}>{minusSvg}</button>
+                          <span className="cart-quantity">{cartObj[x.name].quantity}</span>
+                          <button className="cart-increase-btn cart-quantity-control" onClick={() => handleQuantityIncrease(x)}>{plusSvg}</button>
+                        </>
+                        : <button className="add-to-cart-btn" onClick={() => addProductToCart(x)}>{plusSvg}</button>
+                    }
+                  </div>
+                </div>
+
               </div>)
             }
           </div>
@@ -139,3 +144,7 @@ export default function Products() {
     </>
   )
 }
+
+const plusSvg = <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4 12H20M12 4V20" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+
+const minusSvg = <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M6 12L18 12" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>

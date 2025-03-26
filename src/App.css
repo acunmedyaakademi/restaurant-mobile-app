@@ -3,9 +3,56 @@
 :root {
   --lightGray: #f8f8fb;
   --mcdRed: #df332f;
+  --mcRedDark: rgb(134, 2, 0);
 }
 
 * {
   font-family: "Montserrat", sans-serif;
   box-sizing: border-box;
+}
+
+.navbar-cont {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding: 10px;
+  padding-top: 15px;
+  gap: 10px;
+  justify-content: space-evenly;
+}
+
+.navbar-symbol {
+  height: 32px;
+}
+
+.navbar-item a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  
+
+  h3 {
+    font-size: 0.9rem;
+    margin: 0;
+    color: white;
+    font-weight: 500;
+  }
+
+  svg path, h3 {
+    stroke: var(--mcRedDark);
+    color: var(--mcRedDark);
+  }
+
+
+}
+
+.selected-page a {
+  svg path {
+    stroke: white;
+  }
+  h3 {
+    color: white;
+  }
 }
