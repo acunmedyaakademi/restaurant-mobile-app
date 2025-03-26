@@ -63,7 +63,7 @@ export default function Products() {
   }
 
   function handleQuantityIncrease() {
-
+    
   }
 
   function handleQuantityDecrease() {
@@ -87,14 +87,13 @@ export default function Products() {
             <h3>{x.name}</h3>
             <h4>{x.price}</h4>
             
-            {/* ekle / çıkara dönüşsün */}
             {
               Object.keys(cartObj).includes(x.name)
               ? 
               <>
-                <button>-</button>
+                <button onClick={() => handleQuantityDecrease()}>-</button>
                   {cartObj[x.name].quantity}
-                <button>+</button>
+                <button onClick={() => handleQuantityIncrease()}>+</button>
               </>
               : <button onClick={() => addProductToCart(x)}>+</button>
             }
