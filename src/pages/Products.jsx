@@ -40,6 +40,7 @@ export default function Products() {
           id: item.id,
           quantity: 1,
           price: item.price,
+          img: item.img
         };
       }
     });
@@ -57,17 +58,29 @@ export default function Products() {
   function addProductToCart(product) {
     setCart((prev) => {
       const updatedCart = [...prev, product];
-      localStorage.setItem("cart", JSON.stringify(updatedCart)); // Güncellenmiş sepeti localStorage'a kaydet
+      localStorage.setItem("cart", JSON.stringify(updatedCart)); 
       return updatedCart;
     });
   }
 
-  function handleQuantityIncrease() {
-    
+  function handleQuantityIncrease(product) {
+    setCart((prev) => {
+      const updatedCart = [...prev, product];
+      localStorage.setItem("cart", JSON.stringify(updatedCart)); 
+      return updatedCart;
+    });
   }
 
-  function handleQuantityDecrease() {
-    
+  function handleQuantityDecrease(product) {
+    setCart((prev) => {
+      const updatedCart = [...prev];
+      const productToRemoveIndex = updatedCart.findIndex(x => x.id === product.id);
+      if (productToRemoveIndex !== -1) { 
+        updatedCart.splice(productToRemoveIndex, 1);
+      }
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+      return updatedCart;
+    })
   }
 
   return (
@@ -91,9 +104,9 @@ export default function Products() {
               Object.keys(cartObj).includes(x.name)
               ? 
               <>
-                <button onClick={() => handleQuantityDecrease()}>-</button>
+                <button onClick={() => handleQuantityDecrease(x)}>-</button>
                   {cartObj[x.name].quantity}
-                <button onClick={() => handleQuantityIncrease()}>+</button>
+                <button onClick={() => handleQuantityIncrease(x)}>+</button>
               </>
               : <button onClick={() => addProductToCart(x)}>+</button>
             }

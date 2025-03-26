@@ -45,12 +45,13 @@ export default function Cart() {
       <a href="/products">Products</a>
       {
         Object.keys(cartObj)?.map(x => <div>
+          <img src={cartObj[x]?.img} alt="" />
           <h3>{cartObj[x]?.name}</h3>
           <p>fiyat: {cartObj[x]?.price}</p>
           <p>miktar: {cartObj[x]?.quantity}</p>
         </div>)
       }
-      <button onClick={completeOrder}>Sipariş Ver</button>
+      <button disabled={cart.length == 0 && "true"} onClick={completeOrder}>Sipariş Ver</button>
     </>
   )
 }
