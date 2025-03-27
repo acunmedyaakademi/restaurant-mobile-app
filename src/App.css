@@ -1,15 +1,11 @@
-.products-cont {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --lightGray: #f8f8fb;
+  --mcdRed: #df332f;
 }
 
-.product-list-item {
-  height: 250px;
-  background-color: #f6f9f9;
-  img {
-    width: 100%;
-    height: 100px;
-    object-fit: contain;
-  }
+* {
+  font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
 }
