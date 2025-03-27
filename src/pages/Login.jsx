@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { SupabaseContext } from "../App";
 import { useNavigate } from "react-router-dom";
+import '../css/Home.css'
 
 export default function Login() {
   const { supabase } = useContext(SupabaseContext);
@@ -21,12 +22,13 @@ export default function Login() {
   }
 
   return (
-    <>
-    <form onSubmit={handleLogin}>
-      <input type="text" placeholder="email" name="email" />
-      <input type="password" name="password" />
-      <button>Submit</button>
-    </form>
-    </>
-  )
+    <div className="login-page">
+      <h2>Login to Your Account</h2>
+      <form className="login-form" onSubmit={handleLogin}>
+        <input type="text" placeholder="Email" name="email" required />
+        <input type="password" placeholder="Password" name="password" required />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
 }

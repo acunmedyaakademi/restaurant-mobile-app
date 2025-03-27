@@ -34,7 +34,7 @@ function App() {
   });
   const [cartObj, setCartObj] = useState(() => {
     const savedCart = localStorage.getItem("cartObj");
-    return savedCart ? JSON.parse(savedCart) : {}; 
+    return savedCart ? JSON.parse(savedCart) : {};
   });
 
   useEffect(() => {
@@ -56,17 +56,17 @@ function App() {
 
   return (
     <>
-    <SupabaseContext.Provider value={{ supabase, cart, setCart, cartObj, setCartObj }}>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/settings" element={<Settings />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-      </Routes>
-    </SupabaseContext.Provider>
-    <Navbar />
+      <SupabaseContext.Provider value={{ supabase, cart, setCart, cartObj, setCartObj }}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+        </Routes>
+      </SupabaseContext.Provider>
+      <Navbar />
     </>
   )
 }

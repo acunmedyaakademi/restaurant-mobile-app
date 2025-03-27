@@ -1,14 +1,17 @@
+import '../css/Home.css'
+
 export default function Signup() {
-  
   return (
-    <>
-    <form action="">
-      <input type="text" placeholder="name" />
-      <input type="text" placeholder="surname" />
-      <input type="text" placeholder="phone no" />
-      <input type="text" placeholder="email" />
-      <input type="password" placeholder="password" />
-    </form>
-    </>
-  )
+    <div className="signup-page">
+      <h2>Sign Up Page</h2>
+      <form className="signup-form" autoComplete='off'>
+        <input type="text" placeholder="Name" />
+        <input type="text" placeholder="Surname" />
+        <input type="text" placeholder="Phone No" />
+        <input type="text" placeholder="Email" />
+        <input type="password" placeholder="Password" />
+        <button>Sign Up</button>
+      </form>
+    </div>
+  );
 }
