@@ -1,0 +1,89 @@
+:root {
+  --lightGray: #f8f8fb;
+  --mcdRed: #df332f;
+  --mcRedDark: rgb(134, 2, 0);
+}
+
+.settings-page-cont {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--mcdRed);
+
+  h2 {
+    text-align: center;
+    color: white;
+    font-weight: 500;
+  }
+}
+
+.profile-cont {
+  background-color: white;
+  height: 85vh;
+  border-radius: 35px;
+  border: 10px solid var(--lightGray);
+  /* overflow-y: scroll; */
+}
+
+.profile-info-small, .setting-buttons {
+  margin-inline: 10px;
+}
+
+.profile-info-small {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 200px;
+  justify-content: center;
+
+  img {
+    border-radius: 50%;
+  }
+
+  h3, p {
+    margin: 0;
+  }
+
+  h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+}
+
+.setting-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  height: 70%;
+}
+
+.setting-btn {
+  border-radius: 35px;
+  display: flex;
+  align-items: center;
+  height: 60px;
+  background-color: var(--lightGray);
+  border: none;
+  padding-inline: 20px;
+
+  h4 {
+    margin-left: 10px;
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+}
+
+.settings-right-chevron {
+  margin-left: auto;
+}
+
+.settings-logout-btn {
+  background-color: var(--mcdRed);
+  justify-content: center;
+  color: white;
+  margin-top: auto;
+
+  h4 {
+    text-align: center;
+    font-weight: 600;
+  }
+}

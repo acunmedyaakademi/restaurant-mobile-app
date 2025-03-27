@@ -15,10 +15,7 @@ body {
 .product-page-container {
   padding: 20px;
   margin: auto;
-  height: 90vh;
   background-color: white;
-  overflow-y: scroll;
-  border-radius: 0 0 35px 35px;
 }
 
 h2 {

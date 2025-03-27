@@ -56,3 +56,15 @@
     color: white;
   }
 }
+
+.page-container-with-navbar {
+  height: 90vh;
+  overflow-y: scroll;
+  border-radius: 0 0 35px 35px;
+  background-color: white;
+}
+
+.page-container {
+  overflow-y: scroll;
+  background-color: var(--mcdRed);
+}

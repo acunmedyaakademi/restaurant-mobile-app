@@ -94,7 +94,7 @@ export default function Products() {
 
   return (
     <>
-      <div className="product-page-container">
+      <div className="product-page-container page-container-with-navbar">
         <h2>Products</h2>
         {/* <a href="/cart">Cart</a> */}
         <div className="categories">
