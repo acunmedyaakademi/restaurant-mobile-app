@@ -21,6 +21,7 @@ body {
 h2 {
   font-size: 24px;
   color: var(--darkGray);
+  margin-block: 20px;
 }
 
 .categories {
