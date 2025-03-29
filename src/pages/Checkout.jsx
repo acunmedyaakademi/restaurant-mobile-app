@@ -48,7 +48,8 @@ export default function Checkout() {
 
     await supabase.from("order_details").insert(orderDetails).select();
 
-    localStorage.clear();
+    localStorage.removeItem("cart");    
+    localStorage.removeItem("cartObj");
     navigate("/");
   }
 

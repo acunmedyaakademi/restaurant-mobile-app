@@ -57,24 +57,32 @@ export default function Settings() {
             <h3>{authUser?.name}</h3>
             <p>{authUser?.email}</p>
           </div>
-          <div className="setting-buttons">
-            {
-              settingsBtns.map(x => <button
-                onClick={(e) => { e.preventDefault(); navigate(x.link) }}
-                className="setting-btn">
-                {x.symbol}
-                <h4>{x.name}</h4>
-                <div className="settings-right-chevron">
-                  {rightChevron}
+          {
+            authUser
+              ? <div className="setting-buttons">
+                {
+                  settingsBtns.map(x => <button
+                    onClick={(e) => { e.preventDefault(); navigate(x.link) }}
+                    className="setting-btn">
+                    {x.symbol}
+                    <h4>{x.name}</h4>
+                    <div className="settings-right-chevron">
+                      {rightChevron}
 
-                </div>
-              </button>)
-            }
-            {authUser && <button onClick={handleSignout} className="settings-logout-btn setting-btn">
-              <h4>Çıkış Yap</h4>
-            </button>}
+                    </div>
+                  </button>)
+                }
+                <button onClick={handleSignout} className="settings-logout-btn setting-btn">
+                  <h4>Çıkış Yap</h4>
+                </button>
 
-          </div>
+              </div>
+              : <div className="user-controls">
+                <button onClick={() => navigate("/login")}>Login</button>
+                <button onClick={() => navigate("/signup")}>Signup</button>
+              </div>
+          }
+
         </div>
       </div>
     </>
