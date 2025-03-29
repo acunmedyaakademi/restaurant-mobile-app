@@ -16,6 +16,7 @@ body {
   padding: 20px;
   margin: auto;
   background-color: white;
+
 }
 
 h2 {
@@ -116,7 +117,8 @@ h5 {
   }
 }
 
-.cart-quantity-control, .add-to-cart-btn {
+.cart-quantity-control,
+.add-to-cart-btn {
   border: none;
   background: #222;
   color: white;
