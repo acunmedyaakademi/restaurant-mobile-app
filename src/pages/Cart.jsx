@@ -4,31 +4,14 @@ import { useNavigate } from "react-router-dom";
 import "../css/Cart.css";
 
 export default function Cart() {
-  const { supabase, cart, setCart, cartObj, setCartObj } =
+  const { supabase, cart, setCart, cartObj, setCartObj, userId } =
     useContext(SupabaseContext);
   const [totalPrice, setTotalPrice] = useState(0);
   const navigate = useNavigate();
 
-  async function completeOrder() {
-    const { data, error } = await supabase
-      .from("orders")
-      .insert([{ paid_price: calculatePrice(), status_id: 1 }])
-      .select();
-
-    console.log(data);
-
-    const orderDetails = cart.map((item) => {
-      return {
-        order_id: data[0].id,
-        product_id: item.id,
-      };
-    });
-
-    await supabase.from("order_details").insert(orderDetails).select();
-
-    localStorage.clear();
-    navigate("/");
-  }
+  useEffect(() => {
+    calculatePrice();
+  }, [cart])
 
   function calculatePrice() {
     let fullPrice = 0;
@@ -55,10 +38,14 @@ export default function Cart() {
           </div>
         ))}
       </div>
+      <div className="price-info">
+        ₺{totalPrice}
+      </div>
       <button
         className="order-button"
         disabled={cart.length === 0}
-        onClick={completeOrder}
+        // onClick={completeOrder}
+        onClick={() => navigate("/checkout")}
       >
         Sipariş Ver
       </button>
