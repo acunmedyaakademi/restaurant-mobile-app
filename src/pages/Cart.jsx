@@ -9,30 +9,9 @@ export default function Cart() {
   const [totalPrice, setTotalPrice] = useState(0);
   const navigate = useNavigate();
 
-  async function completeOrder() {
-    const { data, error } = await supabase
-      .from("orders")
-      .insert([{ 
-        paid_price: calculatePrice(), 
-        status_id: 1,
-        user_id: userId 
-      }])
-      .select();
-
-    console.log(data);
-
-    const orderDetails = cart.map((item) => {
-      return {
-        order_id: data[0].id,
-        product_id: item.id,
-      };
-    });
-
-    await supabase.from("order_details").insert(orderDetails).select();
-
-    localStorage.clear();
-    navigate("/");
-  }
+  useEffect(() => {
+    calculatePrice();
+  }, [cart])
 
   function calculatePrice() {
     let fullPrice = 0;
