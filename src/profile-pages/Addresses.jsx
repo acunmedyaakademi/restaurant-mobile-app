@@ -67,7 +67,7 @@ function NewAddressForm({ setAddNew }) {
       { user_id: userId, adres_basligi, il, ilce, mahalle, adres },
     ])
     .select()
-    // setAddNew(false);
+    setAddNew(false);
             
   }
 

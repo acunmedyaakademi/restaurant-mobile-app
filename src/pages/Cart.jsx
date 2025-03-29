@@ -65,7 +65,8 @@ export default function Cart() {
       <button
         className="order-button"
         disabled={cart.length === 0}
-        onClick={completeOrder}
+        // onClick={completeOrder}
+        onClick={() => navigate("/checkout")}
       >
         Sipariş Ver
       </button>
