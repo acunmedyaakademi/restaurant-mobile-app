@@ -27,13 +27,9 @@ export default function Navbar() {
   const location = useLocation();
 
   useEffect(() => {
-    console.log(location.pathname);
     setSelectedPage(navbarItems.find(x => x.link==location.pathname));
 
   }, [])
-
-
-  // console.log(selectedPage)
 
 
   return (
