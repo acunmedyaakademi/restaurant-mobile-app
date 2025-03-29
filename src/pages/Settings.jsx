@@ -1,57 +1,82 @@
+import { useContext, useEffect } from "react"
+import { SupabaseContext } from "../App"
+import { useNavigate } from "react-router-dom";
+import "../css/ProfilePages.css"
+
 export default function Settings() {
+  const { supabase, authUser } = useContext(SupabaseContext);
+  const firstName = authUser?.name.split(" ")[0];
+  const lastName = authUser?.name.split(" ").at(-1);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    async function getProfile() {
+      let { data: profiles, error } = await supabase
+        .from('profiles')
+        .select('*')
+
+    }
+  }, [])
 
   const settingsBtns = [
     {
       name: "Hesap Bilgileri",
-      link: "",
+      link: "/profile",
       symbol: profileSvg
-    },{
+    }, {
       name: "Geçmiş Siparişler",
-      link: "",
+      link: "/past-orders",
       symbol: pastSvg
-    },{
+    }, {
       name: "Adresler",
-      link: "",
+      link: "/addresses",
       symbol: addressSvg
-    },{
+    }, {
       name: "Ödeme Yöntemleri",
-      link: "",
+      link: "/payment-methods",
       symbol: paymentSvg
-    },{
+    }, {
       name: "Şifre Yönetimi",
-      link: "",
+      link: "/password-management",
       symbol: passwordSvg
     },
   ]
 
+  async function handleSignout(e) {
+    e.preventDefault();
+    const { error } = await supabase.auth.signOut();
+  }
+
   return (
     <>
-    <div className="page-container-with-navbar settings-page-cont">
-      <h2>Ayarlar</h2>
-      <div className="profile-cont">
-        <div className="profile-info-small">
-          <img src="https://ui-avatars.com/api/?background=df332f&color=fff&name=Ronald+McDonald" alt="" />
-          <h3>Ronald McDonald</h3>
-          <p>ronald@mcdonald.com</p>
-        </div>
-        <div className="setting-buttons">
-          {
-            settingsBtns.map(x => <button className="setting-btn">
-              {x.symbol}
-              <h4>{x.name}</h4>
-              <div className="settings-right-chevron">
-                {rightChevron}
+      <div className="page-container-with-navbar settings-page-cont">
+        <h2>Ayarlar</h2>
+        <div className="profile-cont">
+          <div className="profile-info-small">
+            <img src={`https://ui-avatars.com/api/?background=df332f&color=fff&name=${firstName}+${lastName}`} alt="" />
+            <h3>{authUser?.name}</h3>
+            <p>{authUser?.email}</p>
+          </div>
+          <div className="setting-buttons">
+            {
+              settingsBtns.map(x => <button
+                onClick={(e) => { e.preventDefault(); navigate(x.link) }}
+                className="setting-btn">
+                {x.symbol}
+                <h4>{x.name}</h4>
+                <div className="settings-right-chevron">
+                  {rightChevron}
 
-              </div>
+                </div>
               </button>)
-          }
-           <button className="settings-logout-btn setting-btn">
-            <h4>Çıkış Yap</h4>
-            </button>
+            }
+            {authUser && <button onClick={handleSignout} className="settings-logout-btn setting-btn">
+              <h4>Çıkış Yap</h4>
+            </button>}
 
+          </div>
         </div>
       </div>
-    </div>
     </>
   )
 }

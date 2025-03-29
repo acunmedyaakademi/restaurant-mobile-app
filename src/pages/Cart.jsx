@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "../css/Cart.css";
 
 export default function Cart() {
-  const { supabase, cart, setCart, cartObj, setCartObj } =
+  const { supabase, cart, setCart, cartObj, setCartObj, userId } =
     useContext(SupabaseContext);
   const [totalPrice, setTotalPrice] = useState(0);
   const navigate = useNavigate();
@@ -12,7 +12,11 @@ export default function Cart() {
   async function completeOrder() {
     const { data, error } = await supabase
       .from("orders")
-      .insert([{ paid_price: calculatePrice(), status_id: 1 }])
+      .insert([{ 
+        paid_price: calculatePrice(), 
+        status_id: 1,
+        user_id: userId 
+      }])
       .select();
 
     console.log(data);
@@ -54,6 +58,9 @@ export default function Cart() {
             </div>
           </div>
         ))}
+      </div>
+      <div className="price-info">
+        ₺{totalPrice}
       </div>
       <button
         className="order-button"
