@@ -84,14 +84,22 @@ export default function Checkout() {
         </div>
         <h3>Adres</h3>
         <div>
-          {chosenAddress?.adres_basligi}
+          {addresses.length > 0 
+          ? <>
+          <h4>{chosenAddress?.adres_basligi}</h4>
+          <p>{chosenAddress?.mahalle}, {chosenAddress?.ilce}, {chosenAddress?.il}, {chosenAddress?.adres}</p>
           <button onClick={() => addressSelectionRef.current.showModal()}>Adresi Değiştir</button>
+          </> 
+          : <>
+          <h4>Kayıtlı adres bulunamadı.</h4> 
+          <a href="/addresses">Adres Ekle</a>
+          </> }
         </div>
         <h3>Ödeme Yöntemi</h3>
         <div className="payment-method">
           Mastercard **34
         </div>
-        <button className="order-button" onClick={completeOrder}>Siparişi Tamamla</button>
+        <button disabled={addresses.length == 0 && "true"} className="order-button" onClick={completeOrder}>Siparişi Tamamla</button>
         
         <dialog ref={addressSelectionRef}>
           {

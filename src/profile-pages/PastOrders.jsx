@@ -4,30 +4,13 @@ import { SupabaseContext } from "../App"
 export default function PastOrders() {
   const { supabase, authUser, userId } = useContext(SupabaseContext);
   const [orders, setOrders] = useState([]);
-  const [orderDetails, setOrderDetails] = useState([]);
 
-  // const statusList = [
-  //   {
-  //     id: 1,
-  //     name: "Sipariş Alındı"
-  //   },{
-  //     id: 2,
-  //     name: "Sipariş Hazırlanıyor"
-  //   },{
-  //     id: 3,
-  //     name: "Sipariş Hazır"
-  //   },{
-  //     id: 4,
-  //     name: "Sipariş İptal Edildi"
-  //   },
-  // ]
   const statusList = {
     1: "Sipariş Alındı",
     2: "Sipariş Hazırlanıyor",
     3: "Sipariş Hazır",
     4: "Sipariş İptal Edildi"
   }
-
 
   useEffect(() => {
     async function getData() {
@@ -43,33 +26,48 @@ export default function PastOrders() {
           products ( name )
         )
       `)
+        .order('created_at', { ascending: false })
         .eq("user_id", userId);
-      setOrders(data);
-      console.log(data)
-
-
+        setOrders(data)
     }
 
     getData();
   }, [userId])
+
+  function groupItems(orderDetails) {
+    const itemMap = {};
+    orderDetails.forEach(({ product_id, products }) => {
+      if (itemMap[product_id]) {
+        itemMap[product_id].count += 1;
+      } else {
+        const productName = products.name
+        itemMap[product_id] = { productName, count: 1 };
+      }
+    });
+    return Object.values(itemMap);
+  };
+  
 
   return (
     <>
       <div className="page-container-with-navbar">
         <h2>Geçmiş Siparişler</h2>
         <div>
-          {
-            orders?.map(x => <div>
-              <h3>{x?.created_at.split("T")[0]}</h3>
-              <span>{statusList[x?.status_id]}</span>
-              <p>
-                {
-                  x?.order_details.map((x, i) => <span> {x?.products?.name}</span>)
-                }
-              </p>
-              <h4>₺{x?.paid_price}</h4>
-            </div>)
-          }
+          {orders && orders?.map((x) => (
+            <div key={x?.id}>
+              <div>
+                <h3>Sipariş No. #{x?.id}</h3>
+                <p>{new Date(x?.created_at).toLocaleString()}</p>
+                <p>Toplam: {x?.paid_price}₺</p>
+                <p>{statusList[x?.status_id]}</p>
+                <p className="past-order-products">
+                  {groupItems(x?.order_details).map((item, index) => (
+                    <span key={index}> {item?.productName} ({item?.count} Adet)</span>
+                  ))}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </>

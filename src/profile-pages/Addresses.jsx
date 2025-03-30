@@ -37,7 +37,7 @@ export default function Addresses() {
                     {
                       addresses.map(x => <div>
                         <h3>{x.adres_basligi}</h3>
-                        <p>{x.mahalle}, {x.ilce}, {x.il}</p>
+                        <p>{x.mahalle}, {x.ilce}, {x.il}, {x.adres}</p>
                         <button>Sil</button>
                         <button>Düzenle</button>
                       </div>)

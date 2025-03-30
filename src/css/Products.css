@@ -140,3 +140,12 @@ h5 {
   justify-content: space-between;
   margin-top: auto;
 }
+
+.past-order-products {
+  span::after {
+    content: ", ";
+  }
+  span:last-child::after {
+    content: ". ";
+  }
+}

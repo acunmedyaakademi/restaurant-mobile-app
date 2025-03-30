@@ -21,14 +21,9 @@ import PastOrders from './profile-pages/PastOrders'
 // Todo:
 // ekstralar: notifications
 // "sipariş oluşturuldu"
-// cart.jsx'te adres varsa complete order, yoksa adres ekleme sayfasına yönlendir
 // supabase signup için trigger eklenecek
 // profiles policy değiştir (enable users to view their data only)
-// checkout ekranında adres yoksa devam edemesin
-// eğer kullanıcı giriş yapmadıysa settings'te yine signup ve login butonları olsun
-// anasayfa home'a ürün previewları eklenebilir
 // eğer supabase kioska hata veriyorsa user_id kısmını gözden geçir
-// geçmiş siparişlerde eğer ürün tekrar ediyorsa kenarına kaç tane olduğunu yaz, tekrar etme (set + count ?)
 // loading ekle
 
 export const supabase = createClient('https://sxkbwpcardxrhfuqzvzc.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN4a2J3cGNhcmR4cmhmdXF6dnpjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI0NzQ3MjAsImV4cCI6MjA1ODA1MDcyMH0.f6pWVT3SGve_Xmcs_m2lH0YDX9anp3hI915eNgjfgTI')
@@ -52,7 +47,7 @@ function App() {
       console.log(event)
       if (event === 'SIGNED_IN') {
         setAuthUser(session.user.user_metadata);
-        setUserId(session.user.user_metadata.sub)
+        setUserId(session.user.user_metadata.sub);
       }
 
       if (event === 'SIGNED_OUT') {
