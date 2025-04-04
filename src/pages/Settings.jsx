@@ -5,8 +5,8 @@ import "../css/ProfilePages.css"
 
 export default function Settings() {
   const { supabase, authUser } = useContext(SupabaseContext);
-  const firstName = authUser?.name.split(" ")[0];
-  const lastName = authUser?.name.split(" ").at(-1);
+  const firstName = authUser?.name?.split(" ")[0];
+  const lastName = authUser?.name?.split(" ").at(-1);
   const navigate = useNavigate();
 
   useEffect(() => {

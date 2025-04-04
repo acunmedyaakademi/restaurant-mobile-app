@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { SupabaseContext } from "../App";
 import { useNavigate } from "react-router-dom";
 import "../css/Cart.css";
+import { plusSvg, minusSvg } from "./Products.jsx";
 
 export default function Cart() {
   const { supabase, cart, setCart, cartObj, setCartObj, userId } =
@@ -21,34 +22,43 @@ export default function Cart() {
   }
 
   return (
-    <div className="cart-container">
-      <h2 className="cart-title">Sepet</h2>
-      <a href="/products" className="product-link">
-        Ürünlere Geri Dön
-      </a>
-      <div className="cart-items">
-        {Object.keys(cartObj)?.map((x) => (
-          <div className="cart-item" key={x}>
-            <img src={cartObj[x]?.img} alt={cartObj[x]?.name} />
-            <div>
-              <h3>{cartObj[x]?.name}</h3>
-              <p>Fiyat: {cartObj[x]?.price} ₺</p>
-              <p>Miktar: {cartObj[x]?.quantity}</p>
+    <>
+      <div className="cart-container">
+        <h2 className="cart-title">Sepet</h2>
+        <a href="/products" className="product-link">
+          Ürünlere Geri Dön
+        </a>
+        <div className="cart-items">
+          {Object.keys(cartObj)?.map((x) => (
+            <div className="cart-item" key={x}>
+              <img src={cartObj[x]?.img} alt={cartObj[x]?.name} />
+              <div>
+                <h3>{cartObj[x]?.name}</h3>
+                <p>Fiyat: {cartObj[x]?.price} ₺</p>
+                <div className="cart-item-price">
+                  <button className="decrease-btn">{minusSvg}</button>
+                  <span>{cartObj[x]?.quantity}</span>
+                  <button className="increase-btn">{plusSvg}</button>
+
+                </div>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-      <div className="price-info">
-        ₺{totalPrice}
+      <div className="bottom-cart">
+        <div className="price-info">
+          Toplam Fiyat : ₺{totalPrice}
+        </div>
+        <button
+          className="order-button"
+          disabled={cart.length === 0}
+          // onClick={completeOrder}
+          onClick={() => navigate("/checkout")}
+        >
+          Sipariş Ver
+        </button>
       </div>
-      <button
-        className="order-button"
-        disabled={cart.length === 0}
-        // onClick={completeOrder}
-        onClick={() => navigate("/checkout")}
-      >
-        Sipariş Ver
-      </button>
-    </div>
+    </>
   );
 }
