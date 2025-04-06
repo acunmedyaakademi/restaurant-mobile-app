@@ -36,24 +36,29 @@ export default function Addresses() {
   return (
     <>
       <div className="page-container-with-navbar">
-        <h2>Adresler</h2>
+        <div className="addresses-header">
+          <h2>Adresler</h2>
+          <a href="/Settings">Ayarlar</a>
+        </div>
+
         {
           addNew
             ? <NewAddressForm setAddNew={setAddNew} />
             : <>
-              <button onClick={() => setAddNew(true)}>+ Yeni Adres Ekle</button>
+              <button className="new-address-button" onClick={() => setAddNew(true)}>+ Yeni Adres Ekle</button>
               <div className="addresses-list">
                 {
                   addresses.length == 0
                     ? <div>Kayıtlı Adres Bulunamadı.</div>
                     : <>
                       {
-                        addresses.map(x => <div>
-                          <h3>{x.adres_basligi}</h3>
-                          <p>{x.mahalle}, {x.ilce}, {x.il}, {x.adres}</p>
-                          <button onClick={() => { deleteDialog.current.showModal(); setSelectedAddressId(x.id) }}>Sil</button>
-                          <button onClick={() => editDialogRef.current.showModal()}>Düzenle</button>
-                        </div>)
+                        addresses.map(x =>
+                          <div className="address-list-item">
+                            <h3>{x.adres_basligi}</h3>
+                            <p>{x.mahalle}, {x.ilce}, {x.il}, {x.adres}</p>
+                            <button onClick={() => { deleteDialog.current.showModal(); setSelectedAddressId(x.id) }}>Sil</button>
+                            <button onClick={() => editDialogRef.current.showModal()}>Düzenle</button>
+                          </div>)
                       }
                     </>
                 }
@@ -119,7 +124,7 @@ function EditDialog({ editDialogRef, selectedAddressId, setSelectedAddressId }) 
         .eq('id', selectedAddressId)
       setAddress(data)
       console.log(data);
-      
+
 
     }
 

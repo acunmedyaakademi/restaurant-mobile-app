@@ -4,6 +4,7 @@
   --mcRedDark: rgb(134, 2, 0);
 }
 
+
 .settings-page-cont {
   display: flex;
   flex-direction: column;
@@ -25,7 +26,8 @@
   /* overflow-y: scroll; */
 }
 
-.profile-info-small, .setting-buttons {
+.profile-info-small,
+.setting-buttons {
   margin-inline: 10px;
 }
 
@@ -40,7 +42,8 @@
     border-radius: 50%;
   }
 
-  h3, p {
+  h3,
+  p {
     margin: 0;
   }
 
@@ -86,5 +89,189 @@
   h4 {
     text-align: center;
     font-weight: 600;
+  }
+}
+
+/*profile*/
+
+.profile-header,
+.past-orders-header,
+.addresses-header,
+.payment-header,
+.password-management-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  a {
+    text-decoration: none;
+    color: var(--mcdRed)
+  }
+}
+
+
+.page-container-with-navbar {
+  padding: 5px 10px;
+
+  h2 {
+    color: var(--mcdRed);
+  }
+}
+
+.profile-info-cont {
+  border: 2px solid var(--mcdRed);
+  padding: 10px 15px;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: var(--lightGray);
+
+  h3,
+  p {
+    color: var(--mcRedDark);
+  }
+
+  span {
+    font-style: italic;
+    font-weight: bold;
+    color: rgb(230, 15, 15)
+  }
+
+  button {
+    padding: 5px 10px;
+    color: var(--mcRedDark);
+    border-radius: 25px;
+    border: none;
+  }
+
+}
+
+
+/*past-orders*/
+
+.past-order-items {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.past-order-item {
+  padding: 10px 15px;
+  background-color: 3px solid var(--lightGray);
+  border: 3px solid var(--mcdRed);
+  border-radius: 15px;
+
+  h3 {
+    color: rgb(165, 96, 223);
+  }
+
+  .past-order-item-date {
+    font-style: italic;
+    color: var(--mcdRed)
+  }
+
+  .past-order-item-price {
+    color: var(--mcRedDark);
+    font-weight: bold;
+  }
+
+  .past-order-item--status {
+    color: rgb(41, 148, 41);
+    font-style: italic;
+    font-weight: bold;
+  }
+
+  .past-order-products {
+    gap: 5px;
+  }
+
+  .past-order-product {
+    color: rgb(73, 10, 10);
+    font-style: italic;
+  }
+}
+
+
+/*addresses*/
+
+.new-address-button {
+  padding: 5px 10px;
+  border-radius: 20px;
+  border: none;
+  background-color: var(--mcdRed);
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.addresses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.address-list-item {
+  border: 2px solid var(--mcdRed);
+  background-color: var(--lightGray);
+  border-radius: 25px;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  p {
+    font-style: italic;
+    font-weight: bold;
+    color: rgb(108, 151, 201);
+  }
+
+  button {
+    padding: 5px 10px;
+    background-color: var(--mcdRed);
+    color: var(--lightGray);
+    border-radius: 20px;
+    border: none;
+    margin-right: 10px;
+  }
+}
+
+
+/*payment-methods*/
+
+.payment-card {
+  border: 5px solid var(--mcdRed);
+  background-color: var(--lightGray);
+  padding: 10px 15px;
+  border-radius: 15px;
+  width: 250px;
+
+  p {
+    font-style: italic;
+  }
+}
+
+
+/*password-management*/
+
+.password-form-area {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  input {
+    padding: 5px 10px;
+    border-radius: 15px;
+  }
+
+  ::placeholder {
+    font-style: italic;
+    color: var(--mcRedDark)
+  }
+
+  button {
+    background-color: var(--lightGray);
+    color: var(--mcdRed);
+    padding: 10px 15px;
+    border-radius: 15px;
   }
 }

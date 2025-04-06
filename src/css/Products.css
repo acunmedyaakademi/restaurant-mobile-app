@@ -71,7 +71,8 @@ h3 {
   text-align: left;
   display: flex;
   flex-direction: column;
-  min-height: 270px;
+  min-height: 250px;
+  object-fit: contain;
 
   img {
     width: 100%;
@@ -145,6 +146,7 @@ h5 {
   span::after {
     content: ", ";
   }
+
   span:last-child::after {
     content: ". ";
   }

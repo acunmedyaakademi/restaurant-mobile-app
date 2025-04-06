@@ -81,17 +81,16 @@ h6 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #d32f2f;
-  color: white;
+  background-color: white;
   min-height: calc(100vh - 100px);
-  padding: 20px;
+  border-radius: 20px;
 }
 
 .cart-title {
   font-size: 28px;
   font-weight: bold;
   margin-bottom: 20px;
-  color: white;
+  color: #d32f2f;
 }
 
 .product-link {
@@ -178,14 +177,14 @@ h6 {
 }
 
 .bottom-cart {
-  margin-top: 25px;
   background-color: #f8f8f8;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 10px 15px;
-  border-radius: 20px;
+  border-radius: 25px;
+  border: 2px solid #f8f8f8;
 }
 
 .price-info {

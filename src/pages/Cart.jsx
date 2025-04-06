@@ -45,19 +45,19 @@ export default function Cart() {
             </div>
           ))}
         </div>
-      </div>
-      <div className="bottom-cart">
-        <div className="price-info">
-          Toplam Fiyat : ₺{totalPrice}
+        <div className="bottom-cart">
+          <div className="price-info">
+            Toplam Fiyat : ₺{totalPrice}
+          </div>
+          <button
+            className="order-button"
+            disabled={cart.length === 0}
+            // onClick={completeOrder}
+            onClick={() => navigate("/checkout")}
+          >
+            Sipariş Ver
+          </button>
         </div>
-        <button
-          className="order-button"
-          disabled={cart.length === 0}
-          // onClick={completeOrder}
-          onClick={() => navigate("/checkout")}
-        >
-          Sipariş Ver
-        </button>
       </div>
     </>
   );

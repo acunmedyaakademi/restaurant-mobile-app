@@ -11,7 +11,7 @@
 
 html,
 body {
-  background-color: #d32f2f;
+  background-color: white;
 }
 
 /* Home */
@@ -24,6 +24,7 @@ body {
   align-items: center;
   min-height: calc(100vh - 100px);
   text-align: center;
+  background-color: #fff;
 }
 
 .home-page h2 {
@@ -36,9 +37,16 @@ body {
   gap: 10px;
 }
 
+.user-controls p {
+  background-color: #d32f2f;
+  color: white;
+  border-radius: 10px;
+  padding: 5px 10px;
+}
+
 .user-controls button {
-  background-color: white;
-  color: #d32f2f;
+  background-color: #d32f2f;
+  color: #fff;
   border: none;
   padding: 10px 20px;
   font-size: 16px;
@@ -47,11 +55,34 @@ body {
   cursor: pointer;
   transition: 0.3s;
   border-radius: 15px;
+  margin-bottom: 10px;
 }
 
 .user-controls button:hover {
   background-color: #b71c1c;
   color: white;
+}
+
+.preview-header {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 18px;
+}
+
+.preview-header h3 {
+  color: #b71c1c;
+}
+
+.preview-header a {
+  padding: 5px 10px;
+  background-color: #fff;
+  text-decoration: none;
+}
+
+.preview-header a:hover {
+  text-decoration: underline;
+
 }
 
 .products-list {

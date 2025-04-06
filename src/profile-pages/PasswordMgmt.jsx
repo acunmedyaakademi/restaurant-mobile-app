@@ -14,7 +14,7 @@ export default function PasswordMgmt() {
     if (password != password2) return;
     const { data, error } = await supabase.auth.updateUser({
       password
-    }) 
+    })
     navigate("/");
   }
 
@@ -22,11 +22,16 @@ export default function PasswordMgmt() {
   return (
     <>
       <div className="page-container-with-navbar">
-        <h2>Yeni Şifre Oluştur</h2>
+        <div className="password-management-header">
+          <h2>Yeni Şifre Oluştur</h2>
+          <a href="/Settings">Ayarlar</a>
+        </div>
         <form onSubmit={handlePasswordChange}>
-          <input type="password" name="password" placeholder="Yeni Şifre" />
-          <input type="password" name="password2" placeholder="Yeni Şifre" />
-          <button>Şifreyi Değiştir</button>
+          <div className="password-form-area">
+            <input type="password" name="password" placeholder="Yeni Şifre" />
+            <input type="password" name="password2" placeholder="Yeni Şifreyi Tekrarlayınız" />
+            <button>Şifreyi Değiştir</button>
+          </div>
         </form>
       </div>
     </>
