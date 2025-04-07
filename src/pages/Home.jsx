@@ -23,7 +23,7 @@ export default function Home() {
   return (
     <>
       <div className="home-page">
-        <img src="" alt="" />
+        <img src="/images/burgers.webp" alt="" />
         <h2>Hızlı, Sıcak, Lezzetli!</h2>
         <div className="user-controls">
           {
@@ -36,24 +36,25 @@ export default function Home() {
           }
 
         </div>
-        <div className="preview-products">
+        <button className="settings-logout-btn setting-btn see-more-btn">Ürünlere Göz At</button>
+        {/* <div className="preview-products">
           <div className="preview-header">
             <h3>Ürünler</h3>
             <a href="/products">Göz atın</a>
           </div>
-          <div className="products-list">
+          <div className="products-list-home">
             {
-              previewProducts.map(x => <div className="product-list-item">
-                <div className="product-item-img">
-                  <img src={x?.img} />
+              previewProducts.map(x => <div className="product-list-item-home">
+                <img src={x?.img} />
+                <div className="item-info-home">
+                  <h4>{x?.name}</h4>
+                  <span>₺{x?.price}</span>
                 </div>
-                <h4>{x?.name}</h4>
-                <span>₺{x?.price}</span>
               </div>)
             }
           </div>
 
-        </div>
+        </div> */}
       </div>
     </>
   )
