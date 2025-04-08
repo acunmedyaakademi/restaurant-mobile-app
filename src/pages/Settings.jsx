@@ -50,7 +50,7 @@ export default function Settings() {
   return (
     <>
       <div className="page-container-with-navbar settings-page-cont">
-        <h2>Ayarlar</h2>
+        <h2 className="settings-title">Ayarlar</h2>
         <div className="profile-cont">
           <div className="profile-info-small">
             <img src={`https://ui-avatars.com/api/?background=df332f&color=fff&name=${firstName}+${lastName}`} alt="" />

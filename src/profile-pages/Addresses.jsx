@@ -1,6 +1,7 @@
 import { useContext, useEffect, useRef } from "react";
 import { useState } from "react"
 import { SupabaseContext } from "../App";
+import { deleteSvg, editSvg } from "../Svg";
 
 export default function Addresses() {
   const { supabase, userId } = useContext(SupabaseContext);
@@ -35,24 +36,29 @@ export default function Addresses() {
 
   return (
     <>
-      <div className="page-container-with-navbar">
+      <div className="page-container-with-navbar settings-page addresses-page">
         <h2>Adresler</h2>
         {
           addNew
             ? <NewAddressForm setAddNew={setAddNew} />
             : <>
-              <button onClick={() => setAddNew(true)}>+ Yeni Adres Ekle</button>
+              <button className="setting-btn red-btn wide-btn" onClick={() => setAddNew(true)}>+ Yeni Adres Ekle</button>
               <div className="addresses-list">
                 {
                   addresses.length == 0
                     ? <div>Kayıtlı Adres Bulunamadı.</div>
                     : <>
                       {
-                        addresses.map(x => <div>
-                          <h3>{x.adres_basligi}</h3>
-                          <p>{x.mahalle}, {x.ilce}, {x.il}, {x.adres}</p>
-                          <button onClick={() => { deleteDialog.current.showModal(); setSelectedAddressId(x.id) }}>Sil</button>
-                          <button onClick={() => editDialogRef.current.showModal()}>Düzenle</button>
+                        addresses.map(x => <div className="address-item">
+                          <div className="address-info">
+                            <h3>{x.adres_basligi}</h3>
+                            <p>{x.mahalle} mahallesi, {x.ilce}, {x.adres}, {x.il}</p>
+                          </div>
+                          
+                          <div className="crud-controls">
+                            <button className="crud-btn" onClick={() => { deleteDialog.current.showModal(); setSelectedAddressId(x.id) }}>{deleteSvg}</button>
+                            <button className="crud-btn" onClick={() => editDialogRef.current.showModal()}>{editSvg}</button>
+                          </div>
                         </div>)
                       }
                     </>
@@ -119,7 +125,7 @@ function EditDialog({ editDialogRef, selectedAddressId, setSelectedAddressId }) 
         .eq('id', selectedAddressId)
       setAddress(data)
       console.log(data);
-      
+
 
     }
 

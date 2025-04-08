@@ -19,13 +19,13 @@ export default function Profile() {
 
   return (
     <>
-      <div className="page-container-with-navbar">
+      <div className="page-container-with-navbar settings-page">
         <h2>Hesap Bilgileri</h2>
         <div className="profile-info-cont">
           <h3>{userInfo?.name} {userInfo?.surname}</h3>
           <p>Eposta: {userInfo?.email}</p>
           <p>Telefon numarası: {userInfo?.phone}</p>
-          <button>Bilgileri Düzenle</button>
+          <button className="setting-btn red-btn wide-btn" >Bilgileri Düzenle</button>
         </div>
       </div>
     </>

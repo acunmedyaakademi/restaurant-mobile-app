@@ -28,7 +28,7 @@ export default function PastOrders() {
       `)
         .order('created_at', { ascending: false })
         .eq("user_id", userId);
-        setOrders(data)
+      setOrders(data)
     }
 
     getData();
@@ -46,26 +46,24 @@ export default function PastOrders() {
     });
     return Object.values(itemMap);
   };
-  
+
 
   return (
     <>
-      <div className="page-container-with-navbar">
+      <div className="page-container-with-navbar settings-page past-orders-page">
         <h2>Geçmiş Siparişler</h2>
-        <div>
+        <div className="past-orders-list">
           {orders && orders?.map((x) => (
-            <div key={x?.id}>
-              <div>
-                <h3>Sipariş No. #{x?.id}</h3>
-                <p>{new Date(x?.created_at).toLocaleString()}</p>
-                <p>Toplam: {x?.paid_price}₺</p>
-                <p>{statusList[x?.status_id]}</p>
-                <p className="past-order-products">
-                  {groupItems(x?.order_details).map((item, index) => (
-                    <span key={index}> {item?.productName} ({item?.count} Adet)</span>
-                  ))}
-                </p>
-              </div>
+            <div className="past-order-item" key={x?.id}>
+              <h3>Sipariş No. #{x?.id}</h3>
+              <p>{new Date(x?.created_at).toLocaleString()}</p>
+              <p>Toplam: {x?.paid_price}₺</p>
+              <p>{statusList[x?.status_id]}</p>
+              <p className="past-order-products">
+                {groupItems(x?.order_details).map((item, index) => (
+                  <span key={index}> {item?.productName} ({item?.count} Adet)</span>
+                ))}
+              </p>
             </div>
           ))}
         </div>

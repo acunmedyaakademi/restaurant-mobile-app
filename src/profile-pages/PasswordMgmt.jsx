@@ -21,12 +21,12 @@ export default function PasswordMgmt() {
 
   return (
     <>
-      <div className="page-container-with-navbar">
+      <div className="page-container-with-navbar settings-page password-settings-page">
         <h2>Yeni Şifre Oluştur</h2>
         <form onSubmit={handlePasswordChange}>
           <input type="password" name="password" placeholder="Yeni Şifre" />
           <input type="password" name="password2" placeholder="Yeni Şifre" />
-          <button>Şifreyi Değiştir</button>
+          <button className="setting-btn red-btn wide-btn">Şifreyi Değiştir</button>
         </form>
       </div>
     </>

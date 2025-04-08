@@ -19,8 +19,12 @@ body {
 
 }
 
+.products-header {
+  height: 6vh;
+}
+
 h2 {
-  font-size: 24px;
+  font-size: 1.7rem;
   color: var(--darkGray);
   margin-block: 20px;
 }
