@@ -222,7 +222,8 @@
 /* payment */
 
 .payments-page {
-  p, h2 {
+  p {
     margin-inline: 20px;
+    
   }
 }

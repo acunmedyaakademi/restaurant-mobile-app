@@ -56,8 +56,15 @@ export default function Addresses() {
                           </div>
                           
                           <div className="crud-controls">
-                            <button className="crud-btn" onClick={() => { deleteDialog.current.showModal(); setSelectedAddressId(x.id) }}>{deleteSvg}</button>
-                            <button className="crud-btn" onClick={() => editDialogRef.current.showModal()}>{editSvg}</button>
+                            <button 
+                            className="crud-btn" 
+                            onClick={() => { deleteDialog.current.showModal(); setSelectedAddressId(x.id) }}>{deleteSvg}</button>
+                            <button 
+                            className="crud-btn" 
+                            onClick={() => 
+                            {
+                              setSelectedAddressId(x?.id);
+                              editDialogRef.current.showModal()}}>{editSvg}</button>
                           </div>
                         </div>)
                       }
@@ -118,20 +125,20 @@ function EditDialog({ editDialogRef, selectedAddressId, setSelectedAddressId }) 
 
   useEffect(() => {
     async function getCurrentAddress() {
-
-      let { data, error } = await supabase
+      if (selectedAddressId) {
+        let { data, error } = await supabase
         .from('addresses')
         .select('*')
         .eq('id', selectedAddressId)
-      setAddress(data)
-      console.log(data);
+      setAddress(data[0])
+      console.log(data);}
 
 
     }
 
     getCurrentAddress();
 
-  }, [])
+  }, [selectedAddressId])
 
 
   async function handleEditAddress(e) {
@@ -142,7 +149,7 @@ function EditDialog({ editDialogRef, selectedAddressId, setSelectedAddressId }) 
     const { data, error } = await supabase
       .from('addresses')
       .update({ adres_basligi, il, ilce, mahalle, adres })
-      .eq('user_id', userId)
+      .eq('id', selectedAddressId)
       .select()
 
     editDialogRef.current.close();

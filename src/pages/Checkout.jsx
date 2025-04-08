@@ -67,7 +67,7 @@ export default function Checkout() {
 
   return (
     <>
-      <div className="page-container-with-navbar">
+      <div className="page-container-with-navbar settings-page">
         <h2>Siparişi Önizlemesi</h2>
         <h3>Ürünler</h3>
         <div className="cart-items">
