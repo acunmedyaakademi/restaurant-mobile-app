@@ -1,7 +1,6 @@
 import { useContext, useEffect } from "react"
 import { SupabaseContext } from "../App"
 import { useNavigate } from "react-router-dom";
-import "../css/ProfilePages.css"
 
 export default function Settings() {
   const { supabase, authUser } = useContext(SupabaseContext);

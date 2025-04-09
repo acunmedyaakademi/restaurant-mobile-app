@@ -13,6 +13,7 @@ export default function Cart() {
 
   useEffect(() => {
     calculatePrice();
+    updateCartObj();
   }, [cart])
 
   function calculatePrice() {
@@ -20,6 +21,46 @@ export default function Cart() {
     cart.map((x) => (fullPrice += x.price));
     setTotalPrice(fullPrice);
     return fullPrice;
+  }
+
+  function updateCartObj() {
+    const newObj = {};
+    cart.forEach((item) => {
+      if (newObj[item.name]) {
+        newObj[item.name].quantity++;
+      } else {
+        newObj[item.name] = {
+          name: item.name,
+          id: item.id,
+          quantity: 1,
+          price: item.price,
+          img: item.img,
+        };
+      }
+    });
+    setCartObj(newObj);
+    localStorage.setItem("cartObj", JSON.stringify(newObj));
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }
+
+  function handleQuantityIncrease(product) {
+    setCart((prev) => {
+      const updatedCart = [...prev, product];
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+      return updatedCart;
+    });
+  }
+
+  function handleQuantityDecrease(product) {
+    setCart((prev) => {
+      const updatedCart = [...prev];
+      const productToRemoveIndex = updatedCart.findIndex(x => x.id === product.id);
+      if (productToRemoveIndex !== -1) {
+        updatedCart.splice(productToRemoveIndex, 1);
+      }
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+      return updatedCart;
+    })
   }
 
   return (
@@ -35,9 +76,13 @@ export default function Cart() {
                   <h3>{cartObj[x]?.name}</h3>
                   <p>Fiyat: {cartObj[x]?.price} ₺</p>
                   <div className="cart-item-price">
-                    <button className="decrease-btn">{minusSvg}</button>
+                    <button 
+                    onClick={() => handleQuantityDecrease(cartObj[x])}
+                    className="decrease-btn">{minusSvg}</button>
                     <span>{cartObj[x]?.quantity}</span>
-                    <button className="increase-btn">{plusSvg}</button>
+                    <button 
+                    onClick={() => handleQuantityIncrease(cartObj[x])}
+                    className="increase-btn">{plusSvg}</button>
 
                   </div>
                 </div>

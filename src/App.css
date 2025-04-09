@@ -4,6 +4,7 @@
   --lightGray: #f8f8fb;
   --mcdRed: #df332f;
   --mcRedDark: rgb(134, 2, 0);
+  --darkGray: #333;
 }
 
 * {
@@ -67,4 +68,53 @@
 .page-container {
   overflow-y: scroll;
   background-color: var(--mcdRed);
+}
+
+dialog {
+  border: none;
+  margin: auto;
+  padding: 20px;
+  border-radius: 25px;
+
+  h4, h3 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+  }
+
+  input {
+    border-radius: 8px;
+    border: 1px solid var(--darkGray);
+    padding: 5px;
+  }
+  
+  .dialog-btn {
+    background-color: var(--mcdRed);
+    width: 230px;
+    border: none;
+    border-radius: 15px;
+    padding: 5px 7px;
+    color: white;
+    font-weight: bold;
+  }
+
+  .dialog-white-btn {
+    background-color: var(--lightGray);
+    color: var(--darkGray);
+  }
+
+  .short-dialog-btn {
+    width: 100px;
+    margin: auto;
+  }
+
+  .profile-edit-btn {
+    width: 100%;
+  }
 }

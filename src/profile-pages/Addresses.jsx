@@ -24,7 +24,7 @@ export default function Addresses() {
   }, [])
 
   async function deleteAddress(e) {
-    e.preventDefault();
+    e.preventDefault();    
     const { error } = await supabase
       .from('addresses')
       .delete()
@@ -74,10 +74,9 @@ export default function Addresses() {
             </>
         }
         <dialog ref={deleteDialog}>
-          <h3>Seçili Adres Silinecek. Emin Misiniz?</h3>
-          <button onClick={(e) => deleteAddress(e)}>Adresi Sil</button>
-          <button onClick={() => deleteDialog.current.close()}>Vazgeç</button>
-
+          <h4>Seçili Adres Silinecek. Emin Misiniz?</h4>
+          <button className="dialog-btn short-dialog-btn" onClick={(e) => deleteAddress(e)}>Adresi Sil</button>
+          <button className="dialog-btn dialog-white-btn short-dialog-btn" onClick={() => deleteDialog.current.close()}>Vazgeç</button>
         </dialog>
         <EditDialog editDialogRef={editDialogRef} selectedAddressId={selectedAddressId} setSelectedAddressId={setSelectedAddressId} />
       </div>
@@ -105,17 +104,17 @@ function NewAddressForm({ setAddNew }) {
   }
 
   return (
-    <>
-      <button onClick={() => setAddNew(false)}>Geri Dön</button>
+    <div className="new-address-cont">
+      <button className="crud-btn" onClick={() => setAddNew(false)}>Geri Dön</button>
       <form className="new-address-form" onSubmit={handleAddNewAddress}>
         <input type="text" name="adres_basligi" placeholder="adres başlığı" />
         <input type="text" name="il" placeholder="il" />
         <input type="text" name="ilce" placeholder="ilçe" />
         <input type="text" name="mahalle" placeholder="mahalle" />
         <input type="text" name="adres" placeholder="adres" />
-        <button>Adres Ekle</button>
+        <button className="order-button">Adres Ekle</button>
       </form>
-    </>
+    </div>
   )
 }
 
@@ -157,14 +156,14 @@ function EditDialog({ editDialogRef, selectedAddressId, setSelectedAddressId }) 
 
   return (
     <dialog ref={editDialogRef}>
-      Güncelle
+      <h4>Güncelle</h4>
       <form onSubmit={handleEditAddress}>
         <input type="text" name="adres_basligi" placeholder="adres başlığı" defaultValue={address?.adres_basligi} />
         <input type="text" name="il" placeholder="il" defaultValue={address?.il} />
         <input type="text" name="ilce" placeholder="ilçe" defaultValue={address?.ilce} />
         <input type="text" name="mahalle" placeholder="mahalle" defaultValue={address?.mahalle} />
         <input type="text" name="adres" placeholder="adres" defaultValue={address?.adres} />
-        <button>Adresi Güncelle</button>
+        <button className="dialog-btn">Adresi Güncelle</button>
       </form>
     </dialog>
   )

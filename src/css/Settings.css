@@ -25,9 +25,23 @@
   border-radius: 35px;
   border: 10px solid var(--lightGray);
   /* overflow-y: scroll; */
+
+  .user-controls {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+
+    button {
+      border-radius: 25px;
+      background-color: var(--mcdRed);
+      color: white;
+    }
+  }
 }
 
-.profile-info-small, .setting-buttons {
+.profile-info-small,
+.setting-buttons {
   margin-inline: 10px;
 }
 
@@ -42,7 +56,8 @@
     border-radius: 50%;
   }
 
-  h3, p {
+  h3,
+  p {
     margin: 0;
   }
 
@@ -84,6 +99,7 @@
   justify-content: center;
   color: white;
   margin-top: auto;
+  margin-bottom: 10px;
 
   h4 {
     text-align: center;
@@ -197,9 +213,7 @@
 
 /* past orders */
 
-.past-orders-page {
-
-}
+.past-orders-page {}
 
 .past-orders-list {
   display: flex;
@@ -224,6 +238,34 @@
 .payments-page {
   p {
     margin-inline: 20px;
-    
+
+  }
+}
+
+/* checkout */
+
+.checkout-page {
+  padding-inline: 20px;
+}
+
+.new-address-cont {
+  margin-inline: 20px;
+
+  > button {
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+}
+
+.new-address-form {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  gap: 10px;
+
+  input {
+    border-radius: 8px;
+    padding: 5px 7px;
+    border: 1px solid var(--darkGray);
   }
 }

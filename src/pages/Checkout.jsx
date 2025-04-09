@@ -1,6 +1,7 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { SupabaseContext } from "../App";
 import { useNavigate } from "react-router-dom";
+import { editSvg } from "../Svg";
 
 // calculatePrice ve totalPrice useState'i app.jsx'e taşınabilir
 
@@ -67,7 +68,7 @@ export default function Checkout() {
 
   return (
     <>
-      <div className="page-container-with-navbar settings-page">
+      <div className="page-container-with-navbar settings-page checkout-page">
         <h2>Siparişi Önizlemesi</h2>
         <h3>Ürünler</h3>
         <div className="cart-items">
@@ -83,12 +84,16 @@ export default function Checkout() {
           ))}
         </div>
         <h3>Adres</h3>
-        <div>
+        <div className="checkout-address">
           {addresses.length > 0 
           ? <>
           <h4>{chosenAddress?.adres_basligi}</h4>
           <p>{chosenAddress?.mahalle}, {chosenAddress?.ilce}, {chosenAddress?.il}, {chosenAddress?.adres}</p>
-          <button onClick={() => addressSelectionRef.current.showModal()}>Adresi Değiştir</button>
+          <button 
+          className="crud-btn" 
+          onClick={() => addressSelectionRef.current.showModal()}>
+            {editSvg}
+            </button>
           </> 
           : <>
           <h4>Kayıtlı adres bulunamadı.</h4> 

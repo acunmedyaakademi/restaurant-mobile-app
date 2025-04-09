@@ -36,25 +36,10 @@ export default function Home() {
           }
 
         </div>
-        <button className="settings-logout-btn setting-btn see-more-btn">Ürünlere Göz At</button>
-        {/* <div className="preview-products">
-          <div className="preview-header">
-            <h3>Ürünler</h3>
-            <a href="/products">Göz atın</a>
-          </div>
-          <div className="products-list-home">
-            {
-              previewProducts.map(x => <div className="product-list-item-home">
-                <img src={x?.img} />
-                <div className="item-info-home">
-                  <h4>{x?.name}</h4>
-                  <span>₺{x?.price}</span>
-                </div>
-              </div>)
-            }
-          </div>
-
-        </div> */}
+        <button 
+        onClick={() => navigate("/products")}
+        className="settings-logout-btn setting-btn see-more-btn">Ürünlere Göz At</button>
+        
       </div>
     </>
   )
