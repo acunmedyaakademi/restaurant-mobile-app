@@ -213,8 +213,6 @@
 
 /* past orders */
 
-.past-orders-page {}
-
 .past-orders-list {
   display: flex;
   flex-direction: column;
