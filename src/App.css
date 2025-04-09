@@ -20,6 +20,7 @@
   padding-top: 15px;
   gap: 10px;
   justify-content: space-evenly;
+  background-color: var(--mcdRed);
 }
 
 .navbar-symbol {
@@ -116,5 +117,22 @@ dialog {
 
   .profile-edit-btn {
     width: 100%;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  html, body {
+    ::-webkit-scrollbar {
+      display: none;
+  }
+  }
+  #root {
+    width: 450px;
+    margin: auto;
+    border: 2px solid #f69d9b;
+    border-radius: 35px;
+    > div {
+      border-radius: 35px;
+    }
   }
 }

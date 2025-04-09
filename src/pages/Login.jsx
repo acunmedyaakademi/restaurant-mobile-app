@@ -18,7 +18,7 @@ export default function Login() {
       password,
     })
 
-    navigate("/");
+    navigate("/settings");
   }
 
   return (

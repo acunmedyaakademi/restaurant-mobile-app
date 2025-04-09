@@ -26,7 +26,7 @@ export default function Signup() {
       { name, surname, email, phone },
     ]).select()
 
-    navigate("/");
+    navigate("/settings");
         
   }
 
