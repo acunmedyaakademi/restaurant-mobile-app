@@ -132,6 +132,10 @@ dialog {
     margin: auto;
     border: 2px solid #f69d9b;
     border-radius: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
     > div {
       border-radius: 35px;
     }
