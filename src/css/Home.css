@@ -36,7 +36,7 @@ body {
   img {
     margin-bottom: auto;
     border-radius: 0 0 35px 35px;
-    height: 50vh;
+    height: 50%;
     object-fit: cover;
   }
 

@@ -1,4 +1,4 @@
-# React + Vite
+# Restaurant Mobile App with React.JS and Supabase
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
