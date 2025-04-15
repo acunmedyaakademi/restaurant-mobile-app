@@ -21,7 +21,8 @@
   gap: 10px;
   justify-content: space-evenly;
   background-color: var(--mcdRed);
-  position:sticky;
+  position:fixed;
+  bottom:-28px;
 }
 
 .navbar-symbol {
@@ -47,8 +48,6 @@
     stroke: var(--mcRedDark);
     color: var(--mcRedDark);
   }
-
-
 }
 
 .selected-page a {
